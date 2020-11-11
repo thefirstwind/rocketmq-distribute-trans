@@ -1,13 +1,5 @@
 version: '3'
 services:
-  mysqldb:
-    image: mysql:5.7
-    container_name: srmti-mysqldb
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: catalog
   namesrv:
     image: apacherocketmq/rocketmq:4.5.0
     container_name: srmti-namesrv
@@ -30,19 +22,3 @@ services:
     command: sh mqbroker -n namesrv:9876 -c ../conf/broker.conf
     depends_on:
       - namesrv
-
-#  srmti-service:
-#    container_name: srmti-service
-#    build: ./
-#    ports:
-#      - "8181:18181"
-#      - "8787:18787"
-#    depends_on:
-#      - mysqldb
-#      - namesrv
-#      - broker
-#    entrypoint: /bin/sh
-#    command: >
-#      -c "
-#      java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=18787,suspend=n -jar -Dspring.profiles.active=docker /app.jar
-#      "

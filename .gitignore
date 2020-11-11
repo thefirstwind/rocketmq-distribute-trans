@@ -25,5 +25,12 @@ hs_err_pid*
 
 data/broker/logs/*
 data/broker/store/*
+data/pd0/
+data/pd1/
+data/pd2/
+data/prometheus/
+data/tikv0/
+data/tikv1/
+data/tikv2/
 target/
 .idea/
